@@ -7,9 +7,11 @@ const initialState = ["Pick up groceries", "Order new mouse", "Feed Luci"];
 const App = () => {
   const [toDoList, setToDoList] = useState(initialState);
 
-  const renderToDoList = toDoList.map((item, i) => {
-    return <Card key={`ToDo Item-${i}`} title={item} />;
-  });
+  const removeToDoHandler = (index) => {
+    let newToDoList = [...toDoList];
+    newToDoList.splice(index, 1);
+    setToDoList(newToDoList);
+  };
 
   const submitToDoHandler = (e, newToDoItem, setNewToDoItem) => {
     e.preventDefault();
@@ -19,6 +21,17 @@ const App = () => {
     setToDoList(newToDoList);
     setNewToDoItem("");
   };
+
+  const renderToDoList = toDoList.map((item, i) => {
+    return (
+      <Card
+        removeToDoHandler={removeToDoHandler}
+        key={`ToDo Item-${i}`}
+        index={i}
+        title={item}
+      />
+    );
+  });
 
   return (
     <div className='bg-gray-100 flex flex-col items-center h-screen'>
