@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div className='bg-gray-100 flex flex-col items-center h-screen'>
-      <div className='container'>
+      <div className='container w-7/12'>
         <Form />
         <div>{renderToDoList}</div>
       </div>
