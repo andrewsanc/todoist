@@ -1,10 +1,13 @@
 import React from "react";
 
-const Card = () => {
+const Card = ({ title }) => {
   return (
-    <div class='bg-white p-6 rounded-lg shadow-lg'>
-      <h2 class='text-2xl font-bold mb-2 text-gray-800'>Card with no image</h2>
-      <p class='text-gray-700'>This is my cool new card!</p>
+    <div className='bg-white p-4 my-4 border rounded-md shadow-sm flex items-center'>
+      <h2 className='text-2xl font-bold mb-2 text-gray-800'>{title}</h2>
+      <div className='flex items-center'>
+        <button>Add</button>
+        <button>Add</button>
+      </div>
     </div>
   );
 };
