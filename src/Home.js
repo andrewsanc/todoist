@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "./Form";
 import Card from "./Card";
 
-const initialState = ["Pick up groceries", "Order new mouse", "Feed Luci"];
-
 const Home = () => {
-  const [toDoList, setToDoList] = useState(initialState);
+  const [toDoList, setToDoList] = useState([]);
 
-  const removeToDoHandler = (index) => {
+  useEffect(() => {
+    const fetchToDoList = async () => {
+      const response = await fetch("http://localhost:4000/api/v1/tasks");
+      const { tasks } = await response.json();
+      setToDoList(tasks);
+    };
+    fetchToDoList();
+  });
+
+  const removeToDoHandler = (id) => {
+    console.log(id);
     let newToDoList = [...toDoList];
-    newToDoList.splice(index, 1);
+    newToDoList.splice(id, 1);
     setToDoList(newToDoList);
   };
 
@@ -27,8 +35,8 @@ const Home = () => {
       <Card
         removeToDoHandler={removeToDoHandler}
         key={`ToDo Item-${i}`}
-        index={i}
-        title={item}
+        id={item._id}
+        name={item.name}
       />
     );
   });

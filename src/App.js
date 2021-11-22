@@ -8,8 +8,8 @@ const App = () => {
     <BrowserRouter>
       <div className='bg-gray-100 flex flex-col items-center min-h-screen'>
         <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route path='/:id' element={<EditCard />} />
+          <Route path='/' element={<Home />} />
+          <Route path='task/:id' element={<EditCard />} />
         </Routes>
       </div>
     </BrowserRouter>
