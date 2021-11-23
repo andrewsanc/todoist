@@ -5,7 +5,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 const Card = ({ name, id, removeToDoHandler }) => {
   let navigate = useNavigate();
   const editCardHandler = (id) => {
-    navigate(`task/${id}`);
+    navigate(`tasks/${id}`);
   };
 
   return (

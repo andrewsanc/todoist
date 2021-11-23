@@ -9,7 +9,7 @@ const App = () => {
       <div className='bg-gray-100 flex flex-col items-center min-h-screen'>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='task/:id' element={<EditCard />} />
+          <Route path='tasks/:id' element={<EditCard />} />
         </Routes>
       </div>
     </BrowserRouter>
