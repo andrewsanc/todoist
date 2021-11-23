@@ -34,6 +34,7 @@ const EditCard = () => {
             className='shadow border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-8/12 rounded-l-md'
             type='text'
             value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
           />
         </div>
         <div>
@@ -41,7 +42,8 @@ const EditCard = () => {
           <input
             type='checkbox'
             className='form-checkbox'
-            value={taskCompleted ? true : false}
+            checked={taskCompleted}
+            onChange={(e) => setTaskCompleted(e.target.checked)}
           />
         </div>
         <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
