@@ -28,6 +28,20 @@ const EditCard = () => {
           <span>Task ID</span>
           <span>{taskID}</span>
         </div>
+        <div className='flex'>
+          <span>Name</span>
+          <input
+            className='shadow border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-8/12 rounded-l-md'
+            type='text'
+          />
+        </div>
+        <div>
+          <span className='ml-2'>Completed</span>
+          <input type='checkbox' className='form-checkbox' />
+        </div>
+        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+          Submit
+        </button>
       </div>
     </div>
   );
