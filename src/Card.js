@@ -5,7 +5,6 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 const Card = ({ name, id, removeToDoHandler }) => {
   let navigate = useNavigate();
   const editCardHandler = (id) => {
-    console.log(id);
     navigate(`task/${id}`);
   };
 
@@ -14,7 +13,7 @@ const Card = ({ name, id, removeToDoHandler }) => {
       <h2 className='text-xl font-normal text-gray-800'>{name}</h2>
       <div className='ml-auto flex'>
         <FaEdit
-          onClick={editCardHandler}
+          onClick={() => editCardHandler(id)}
           size='20'
           className='mx-6 cursor-pointer hover:opacity-30'
         />

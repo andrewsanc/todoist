@@ -12,7 +12,7 @@ const Home = () => {
       setToDoList(tasks);
     };
     fetchToDoList();
-  });
+  }, []);
 
   const removeToDoHandler = (id) => {
     console.log(id);
