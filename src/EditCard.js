@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const EditCard = () => {
   const [taskID, setTaskID] = useState("");
@@ -48,15 +49,16 @@ const EditCard = () => {
     setSuccessfulUpdate(true);
   };
 
+  let navigate = useNavigate();
   return (
-    <div className='bg-white py-4 px-14 my-4 border rounded-md shadow-sm flex flex-col items-center'>
-      <h2 className='text-xl font-normal text-gray-800'>Edit Task</h2>
-      <div className='flex'>
-        <span>Task ID</span>
-        <span>{taskID}</span>
+    <div className='bg-white py-8 px-10 my-4 border rounded-md shadow-sm flex flex-col items-center w-5/12'>
+      <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Edit Task</h2>
+      <div className='container my-2 flex items-center'>
+        <div className='mx-10 w-2/12'>Task ID</div>
+        <div className=''>{taskID}</div>
       </div>
-      <div className='flex items-center'>
-        <span>Name</span>
+      <div className='container flex items-center'>
+        <div className='mx-10 my-2 w-2/12'>Name</div>
         <input
           className='shadow border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-8/12 rounded-l-md'
           type='text'
@@ -64,8 +66,8 @@ const EditCard = () => {
           onChange={(e) => setTaskName(e.target.value)}
         />
       </div>
-      <div className='flex items-center'>
-        <span>Completed</span>
+      <div className='container flex items-center'>
+        <div className='mx-10 my-2 w-2/12'>Completed</div>
         <input
           type='checkbox'
           className='form-checkbox'
@@ -73,13 +75,21 @@ const EditCard = () => {
           onChange={(e) => setTaskCompleted(e.target.checked)}
         />
       </div>
-      <button
-        onClick={submitButtonHandler}
-        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-      >
-        {inRequest ? "Submitting..." : "Submit"}
-      </button>
-      <div>{successfulUpdate && "Edit Successful"}</div>
+      <div className='container flex justify-center'>
+        <button
+          onClick={() => navigate("/")}
+          className='bg-white front-semibold py-2 px-4 mx-2 text-blue-500 border border-blue-500 rounded'
+        >
+          Back
+        </button>
+        <button
+          onClick={submitButtonHandler}
+          className='bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 mx-2 rounded'
+        >
+          {inRequest ? "Submitting..." : "Submit"}
+        </button>
+      </div>
+      {successfulUpdate && <div className='mt-4'>Edit Successfull</div>}
     </div>
   );
 };
