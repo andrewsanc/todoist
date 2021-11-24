@@ -13,7 +13,7 @@ const Form = ({ submitToDoHandler }) => {
         <input
           onChange={(e) => setNewToDoItem(e.target.value)}
           value={newToDoItem}
-          className='shadow border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-8/12 rounded-l-md'
+          className='shadow border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-700 focus:border-transparent w-8/12 rounded-l-md'
           type='text'
           placeholder='e.g. pick up groceries'
         />

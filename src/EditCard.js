@@ -60,7 +60,7 @@ const EditCard = () => {
       <div className='container flex items-center'>
         <div className='mx-10 my-2 w-2/12'>Name</div>
         <input
-          className='shadow border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-8/12 rounded-l-md'
+          className='shadow border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-700 focus:border-transparent w-8/12 rounded'
           type='text'
           value={taskName}
           onChange={(e) => setTaskName(e.target.value)}
