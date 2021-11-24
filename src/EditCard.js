@@ -54,11 +54,11 @@ const EditCard = () => {
     <div className='bg-white py-8 px-10 my-4 border rounded-md shadow-sm flex flex-col items-center w-5/12'>
       <h2 className='text-2xl font-semibold text-gray-800 mb-4'>Edit Task</h2>
       <div className='container my-2 flex items-center'>
-        <div className='mx-10 w-2/12'>Task ID</div>
+        <div className='mx-10 w-2/12 text-lg'>Task ID</div>
         <div className=''>{taskID}</div>
       </div>
       <div className='container flex items-center'>
-        <div className='mx-10 my-2 w-2/12'>Name</div>
+        <div className='mx-10 my-2 w-2/12 text-lg'>Name</div>
         <input
           className='shadow border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-700 focus:border-transparent w-8/12 rounded'
           type='text'
@@ -67,7 +67,7 @@ const EditCard = () => {
         />
       </div>
       <div className='container flex items-center'>
-        <div className='mx-10 my-2 w-2/12'>Completed</div>
+        <div className='mx-10 my-2 w-2/12 text-lg'>Completed</div>
         <input
           type='checkbox'
           className='form-checkbox'
