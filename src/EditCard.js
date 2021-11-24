@@ -78,7 +78,7 @@ const EditCard = () => {
       <div className='container flex justify-center'>
         <button
           onClick={() => navigate("/")}
-          className='bg-white front-semibold py-2 px-4 mx-2 text-blue-500 border border-blue-500 rounded'
+          className='bg-white front-semibold py-2 px-4 mx-2 text-blue-500 border border-blue-500 rounded hover:underline'
         >
           Back
         </button>
