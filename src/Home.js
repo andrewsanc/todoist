@@ -15,13 +15,21 @@ const Home = () => {
     setToDoList(tasks);
   };
 
-  const submitToDoHandler = (e, newToDoItem, setNewToDoItem) => {
-    e.preventDefault();
-    if (newToDoItem === "") return;
-    let newToDoList = [...toDoList];
-    newToDoList.push(newToDoItem);
-    setToDoList(newToDoList);
-    setNewToDoItem("");
+  const createNewTask = async (newToDoItem) => {
+    const response = await fetch("http://localhost:4000/api/v1/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: newToDoItem,
+      }),
+    });
+
+    const { task } = await response.json();
+    if (task) {
+      fetchToDoList();
+    }
   };
 
   const renderToDoList = toDoList.map((item, i) => {
@@ -37,7 +45,7 @@ const Home = () => {
 
   return (
     <div className='container w-7/12'>
-      <Form submitToDoHandler={submitToDoHandler} />
+      <Form createNewTask={createNewTask} />
       <div>{renderToDoList}</div>
     </div>
   );

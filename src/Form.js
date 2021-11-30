@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 
-const Form = ({ submitToDoHandler }) => {
+const Form = ({ createNewTask }) => {
   const [newToDoItem, setNewToDoItem] = useState("");
+
+  const formSubmissionHandler = (e) => {
+    e.preventDefault();
+    createNewTask(newToDoItem);
+    setNewToDoItem("");
+  };
 
   return (
     <div className='bg-white my-10 p-2 border rounded-md shadow-s flex flex-col items-center'>
       <h1 className='text-2xl font-medium my-3'>Task Manager</h1>
       <form
         className='container mb-8 flex items-center justify-center'
-        onSubmit={(e) => submitToDoHandler(e, newToDoItem, setNewToDoItem)}
+        onSubmit={(e) => formSubmissionHandler(e)}
       >
         <input
           onChange={(e) => setNewToDoItem(e.target.value)}
