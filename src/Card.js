@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const Card = ({ name, id, fetchToDoList }) => {
+const Card = ({ name, id, completed, fetchToDoList }) => {
   let navigate = useNavigate();
   const editCardHandler = (id) => {
     navigate(`tasks/${id}`);
@@ -27,7 +27,15 @@ const Card = ({ name, id, fetchToDoList }) => {
 
   return (
     <div className='bg-white py-4 px-14 my-4 border rounded-md shadow-sm flex items-center'>
-      <h2 className='text-xl font-normal text-gray-800'>{name}</h2>
+      <h2
+        className={
+          completed
+            ? "line-through text-xl font-normal text-gray-800"
+            : "text-xl font-normal text-gray-800"
+        }
+      >
+        {name}
+      </h2>
       <div className='ml-auto flex'>
         <FaEdit
           onClick={() => editCardHandler(id)}

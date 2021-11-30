@@ -39,6 +39,7 @@ const Home = () => {
         id={item._id}
         name={item.name}
         fetchToDoList={fetchToDoList}
+        completed={item.completed}
       />
     );
   });
