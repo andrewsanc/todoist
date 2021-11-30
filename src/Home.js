@@ -6,19 +6,13 @@ const Home = () => {
   const [toDoList, setToDoList] = useState([]);
 
   useEffect(() => {
-    const fetchToDoList = async () => {
-      const response = await fetch("http://localhost:4000/api/v1/tasks");
-      const { tasks } = await response.json();
-      setToDoList(tasks);
-    };
     fetchToDoList();
   }, []);
 
-  const removeToDoHandler = (id) => {
-    console.log(id);
-    let newToDoList = [...toDoList];
-    newToDoList.splice(id, 1);
-    setToDoList(newToDoList);
+  const fetchToDoList = async () => {
+    const response = await fetch("http://localhost:4000/api/v1/tasks");
+    const { tasks } = await response.json();
+    setToDoList(tasks);
   };
 
   const submitToDoHandler = (e, newToDoItem, setNewToDoItem) => {
@@ -33,10 +27,10 @@ const Home = () => {
   const renderToDoList = toDoList.map((item, i) => {
     return (
       <Card
-        removeToDoHandler={removeToDoHandler}
         key={`ToDo Item-${i}`}
         id={item._id}
         name={item.name}
+        fetchToDoList={fetchToDoList}
       />
     );
   });

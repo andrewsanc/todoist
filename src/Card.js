@@ -2,10 +2,27 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const Card = ({ name, id, removeToDoHandler }) => {
+const Card = ({ name, id, fetchToDoList }) => {
   let navigate = useNavigate();
   const editCardHandler = (id) => {
     navigate(`tasks/${id}`);
+  };
+
+  const deleteTaskHandler = async (id) => {
+    const response = await fetch(`http://localhost:4000/api/v1/tasks/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      }),
+    });
+
+    const { success } = await response.json();
+    if (success) {
+      fetchToDoList();
+    }
   };
 
   return (
@@ -18,7 +35,7 @@ const Card = ({ name, id, removeToDoHandler }) => {
           className='mx-6 cursor-pointer hover:opacity-30'
         />
         <FaTrashAlt
-          onClick={removeToDoHandler}
+          onClick={() => deleteTaskHandler(id)}
           size='20'
           className='cursor-pointer hover:opacity-30'
         />
